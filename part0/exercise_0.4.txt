@@ -1,0 +1,42 @@
+note over browser: 
+Page is fully loaded
+end note
+
+
+note over browser: 
+User types data into text input and hits save
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over server:
+Data from POST request body is pushed 
+into `notes` with the content and date
+end note
+
+server-->browser: HTTP 302 https://studies.cs.helsinki.fi/notes
+browser->server: HTTP GET https://studies.cs.helsinki.fi/notes
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: JSON data with the user's entered note and date
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
+
+note over browser:
+the note the user entered is now shown
+end note

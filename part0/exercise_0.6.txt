@@ -1,0 +1,12 @@
+note over browser: 
+Page is fully loaded
+end note
+
+
+note over browser: 
+User types data into text input and hits save
+end note
+
+note over browser:
+
+end note
