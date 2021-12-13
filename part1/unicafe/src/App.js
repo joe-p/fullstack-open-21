@@ -10,7 +10,10 @@ const Button = ({stateVar, stateSet, text}) => {
 
 const StatisticLine = ({name, value}) => {
   return (
-    <div>{name}: {value}</div>
+    <tr>
+      <td>{name}</td>
+      <td>{value}</td>
+    </tr>
   )
 }
 
@@ -19,13 +22,21 @@ const Statistics = ({good, neutral, bad}) => {
 
   if(all > 0){
     return (
-      <div>
-        <StatisticLine name='Good' value={good}/>
-        <StatisticLine name='Neutral' value={neutral}/>
-        <StatisticLine name='Bad' value={bad}/>
-        <StatisticLine name='All' value={all}/>
-        <StatisticLine name='Average' value={(good*1 + bad*-1) / all}/>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Stat</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <StatisticLine name='Good' value={good}/>
+          <StatisticLine name='Neutral' value={neutral}/>
+          <StatisticLine name='Bad' value={bad}/>
+          <StatisticLine name='All' value={all}/>
+          <StatisticLine name='Average' value={(good*1 + bad*-1) / all}/>
+        </tbody>
+      </table>
     )
   }
   else {
