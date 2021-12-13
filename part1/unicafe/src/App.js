@@ -8,17 +8,23 @@ const Button = ({stateVar, stateSet, text}) => {
   )
 }
 
+const StatisticLine = ({name, value}) => {
+  return (
+    <div>{name}: {value}</div>
+  )
+}
+
 const Statistics = ({good, neutral, bad}) => {
   const all = good + neutral + bad
 
   if(all > 0){
     return (
       <div>
-        <div>Good: {good}</div>
-        <div>Neutral: {neutral}</div>
-        <div>Bad: {bad}</div>
-        <div>All: {all}</div>
-        <div>Average: {(good*1 + bad*-1) / all} </div>
+        <StatisticLine name='Good' value={good}/>
+        <StatisticLine name='Neutral' value={neutral}/>
+        <StatisticLine name='Bad' value={bad}/>
+        <StatisticLine name='All' value={all}/>
+        <StatisticLine name='Average' value={(good*1 + bad*-1) / all}/>
       </div>
     )
   }
